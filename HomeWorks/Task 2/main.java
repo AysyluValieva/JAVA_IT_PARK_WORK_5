@@ -17,10 +17,20 @@ class Program {
 				case 1: {
 					int a = scanner.nextInt();
 					int b = scanner.nextInt();
+					if(a > b){					
+					    for(int j = a; j >=b; j--){
+						if(j%2 == 0){
+						   System.out.println(j + "");
+						   }					
+				        }
+						
+					}
+				else {
 					for(int i = a; i <= b; i++){
 						if(i%2 == 0){
 						   System.out.println(i + "");
 						   }					
+				        }
 						}
 					break;
 				}
