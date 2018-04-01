@@ -7,26 +7,33 @@ class MainB {
 	    int N = scanner.nextInt();
 		System.out.println("M = ");
 	    int M = scanner.nextInt();
+		
 	    int a[][] = new int[N][M];
-	    System.out.println("a[i][j] = ");
-	    for (int i = 0; i < N; i++) 
-	    {
-			for(int j = 0; j < M; j++){
-                 a[i][j] = scanner.nextInt(); 
-			}
-        }
-	    System.out.print ("a[N][M] = ");
-		System.out.println();
-        for (int i = 0; i < N; i++) 
-	    {
-			for(int j = 0; j < M; j++){
-                System.out.print (a[i][j]+" ");
+		int i, j, k;
+	    System.out.println ("a[N][M] = ");
+		
+		k = 1;
+		
+        for ( i = 0; i < N ; ++i ){
+            if((i%2==0)){
+			for(j = 0; j < M; j++){
+			   a[i][j] =k;
+               k++;
+			   System.out.print (a[i][j]+" ");
+			   }
+			   }
+			else {
+			  for (j = M-1; j >=0; j--){
+			  a[i][j]=k;
+			  k ++;
+			  System.out.print (a[i][j]+" ");
+			  }
 			}
 			System.out.println();
-        }
-		
-		
-		
+
+			}
+			
+				
 		
 		
 	  }

@@ -1,41 +1,41 @@
 import java.util.Scanner;
 
-class MainC {
+class MainD {
 	public static void main(String[] args) {
 	    Scanner scanner = new Scanner(System.in);
 	    System.out.println("N = ");
 	    int N = scanner.nextInt();
-		System.out.println("M = ");
-	    int M = scanner.nextInt();
-	    int a[][] = new int[N][M];
+		
+	    int a[][] = new int[N][N];
 	    System.out.println("a[i][j] = ");
 	    for (int i = 0; i < N; i++) 
 	    {
-			for(int j = 0; j < M; j++){
+			for(int j = 0; j < N; j++){
                  a[i][j] = scanner.nextInt(); 
 			}
         }
-	    System.out.println ("a[N][M] = ");
+	    System.out.println ("a[N][N] = ");
         for (int i = 0; i < N; i++) 
 	    {
-			for(int j = 0; j < M; j++){
+			for(int j = 0; j < N; j++){
                 System.out.print (a[i][j]+" ");
 			}
 			System.out.println();
         }
 		
-		int min = 0;
-		int min_n[] = new int[N];
+		int sum = 0;
+		int d[] = new int[N];
 		for (int i = 0; i < N; i++) 
 	    {
-			for(int j = 0; j < M; j++){
-				if (a[i][j] < a[i][min]){min = j;}
+			for(int j = 0; j < N; j++){
+				d[i] = a[i][N-1-i];
 			}
+			sum=sum+d[i];
 			
-		min_n[i] = a[i][min];
-		System.out.print (min_n[i]+" ");
 
 		}
+		System.out.print (sum+" ");
+
 		System.out.println();
 	  }
 }
