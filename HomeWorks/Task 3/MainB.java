@@ -23,11 +23,13 @@ class MainB {
 			   }
 			   }
 			else {
-			  for (j = M-1; j >=0; j--){
-			  a[i][j]=k;
-			  k ++;
+			  for (j = 0; j < M; j++){
+			  //a[i][j]=k;
+			  a[i][j]=k+M-1-j;
 			  System.out.print (a[i][j]+" ");
 			  }
+			  k = k + M;
+
 			}
 			System.out.println();
 
