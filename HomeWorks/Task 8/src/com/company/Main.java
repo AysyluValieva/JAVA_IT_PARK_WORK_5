@@ -12,13 +12,10 @@ public class Main {
         Triangle triangle = new Triangle("Triangle",3, 5, 4, 2);
 
 
+        Figure numbers[] = {circle, square, rectangle, ellipse, triangle};
 
-
-
-        Circle numbers[] = {circle, square, rectangle, ellipse, triangle};
-
-        for (Circle number : numbers) {
-            System.out.println(number.toString() + number.area());
+        for (Figure number : numbers) {
+            System.out.println(number.toString() + String.format("%.5g",number.area()));
         }
     }
 }
