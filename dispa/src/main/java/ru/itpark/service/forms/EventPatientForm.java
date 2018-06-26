@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 
 public class EventPatientForm {
 
-    private  String eventID;
-    private  String indivID;
+    private  Integer eventID;
+    private  Integer indivID;
 }

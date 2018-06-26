@@ -5,10 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.itpark.service.dto.CartDto;
-import ru.itpark.service.models.*;
-import ru.itpark.service.repositories.*;
-import ru.itpark.service.dto.*;
+import ru.itpark.service.dto.CardDto;
 import ru.itpark.service.dto.IndividualDto;
 import ru.itpark.service.models.EventServicePatient;
 import ru.itpark.service.models.Individual;
@@ -43,12 +40,12 @@ public class CardSImpl implements CardS{
     @Autowired
     private CardRepository cardRepository;
 
-    public List<CartDto> getCart(Integer eventPatientId) {
+    public List<CardDto> getCart(Integer eventPatientId) {
         List<EventServicePatient> eventServicePatients = cardRepository.findByEventPatientId(eventPatientId);
 
-        List<CartDto> cartDtos = new ArrayList<>();
+        List<CardDto> cartDtos = new ArrayList<>();
         for (EventServicePatient eventServicePatient : eventServicePatients) {
-            cartDtos.add(CartDto.builder()
+            cartDtos.add(CardDto.builder()
                     .id(eventServicePatient.getId())
                     .serviceName(eventServicePatient.getEventServiceID().getServiceID().getName())
                     .status(eventServicePatient.getStatus().getName())

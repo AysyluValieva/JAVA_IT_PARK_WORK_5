@@ -14,7 +14,7 @@ public interface EventAgreementS {
     List<EventAgreementDto> getOneEventAgreement(Integer eventPatientServiceId);
 
     void addEventAgreement(EventAgreementForm eventAgreement);
-    void addEventServicePatient(List<EventServicePatientForm> list);
+    void addEventServicePatient(Integer eventId);
 
 
 }

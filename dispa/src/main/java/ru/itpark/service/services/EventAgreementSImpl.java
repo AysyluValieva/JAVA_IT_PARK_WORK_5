@@ -56,17 +56,22 @@ public class EventAgreementSImpl  implements EventAgreementS{
     private ServiceStatusRepository serviceStatusRepository;
 
     @Autowired
+    private SrvRenderedRepository srvRenderedRepository;
+
+    @Autowired
     private EventServicePatientRepository eventServicePatientRepository;
 
     @Override
-    public void addEventServicePatient(List<EventServicePatientForm> list){
+    public void addEventServicePatient(Integer eventId ){
+
+        List<EventServicePatient> list = eventServicePatientRepository.findByEventId(eventId);
 
         if (list != null) {
-            for (EventServicePatientForm eventService : list) {
+            for (EventServicePatient eventService : list) {
 
-                EventService eServ = eventServiceRepository.findOneId(eventService.getEventServiceID()).get();
-                EventPatient ePat = eventPatientsRepository.findOneEventPatient(eventService.getEventPatientID()).get();
-                ServiceStatus sStat = serviceStatusRepository.findOneStatusById(eventService.getStatus()).get();
+                EventService eServ = eventServiceRepository.findOneId(eventService.getEventServiceID().getId()).get();
+                EventPatient ePat = eventPatientsRepository.findOneEventPatient(eventService.getEventPatientID().getId()).get();
+                ServiceStatus sStat = serviceStatusRepository.findOneStatusById(eventService.getStatus().getId()).get();
 
                 EventServicePatient newEventServicePatient = EventServicePatient.builder()
                         .eventServiceID(eServ)
@@ -75,7 +80,7 @@ public class EventAgreementSImpl  implements EventAgreementS{
                         .build();
 
 
-                eventServicePatientRepository.save(newEventServicePatient);
+                srvRenderedRepository.save(newEventServicePatient);
 
 
             }

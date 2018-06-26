@@ -8,17 +8,17 @@ import java.util.Optional;
 
 public interface IndividualRepository extends JpaRepository<Individual, Integer>{
 
-    @Query(nativeQuery = true, value = "SELECT * from pim_individual WHERE UPPER (surname) like '%'||upper(?1)||'%'")
-    List<Individual> findBySurname(String surname);
+    @Query(nativeQuery = true, value = "SELECT * from pim_individual limit 1")
+    List<Individual> findBySurname();
 
     @Query(nativeQuery = true, value = "SELECT id, name from pim_individual WHERE UPPER (surname) like '%'||upper(?1)||'%' limit 1")
     List<Individual> findOneIndividual(String surname);
 
-    @Query(nativeQuery = true, value = "SELECT id, name from pim_individual WHERE UPPER (surname) like '%'||upper(?1)||'%' limit 1")
-    Optional<Individual> findOneIndividualID(String surname);
+    @Query(nativeQuery = true, value = "SELECT * from pim_individual WHERE id = ?1 limit 1")
+    Optional<Individual> findOneIndividualID(Integer indivId);
 
 
-    @Query(nativeQuery = true, value = "SELECT id, name from pim_individual WHERE id = ?1 limit 1")
+    @Query(nativeQuery = true, value = "SELECT * from pim_individual i where id = ?1 limit 1")
     List<Individual> findOneIndividualById(Integer indivId);
 
 

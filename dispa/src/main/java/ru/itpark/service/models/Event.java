@@ -29,6 +29,5 @@ public class Event {
 
     private String name;
 
-    private Date  startDate;
-    private Date  endDate;
+
 }

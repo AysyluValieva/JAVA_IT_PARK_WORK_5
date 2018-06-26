@@ -58,8 +58,8 @@ public class EventPatientSImpl implements EventPatientS{
     @Autowired
     private IndividualRepository individualRepository;
 
-    public List<IndividualDto> getIndividual(String surname) {
-        List<Individual> individuals = individualRepository.findBySurname(surname);
+    public List<IndividualDto> getIndividual() {
+        List<Individual> individuals = individualRepository.findBySurname();
 
         List<IndividualDto> individualDtos = new ArrayList<>();
         for (Individual individual : individuals) {

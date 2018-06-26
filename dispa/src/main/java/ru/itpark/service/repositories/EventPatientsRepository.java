@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface EventPatientsRepository extends JpaRepository<EventPatient, Integer>{
 
 
-    @Query(nativeQuery = true, value = "SELECT mep.id, mep.event_id, mep.indiv_id, i.name, i.surname, i.patr_name, g.code, i.birth_dt, e.name as eventName " +
+    @Query(nativeQuery = true, value = "SELECT mep.id, mep.event_id, mep.indiv_id,  i.surname, i.name, i.patr_name, g.code, i.birth_dt, e.name as eventName " +
             "from disp.md_event_patient mep " +
             "join public.pim_individual i on i.id = mep.indiv_id " +
             "join public.pim_gender g on g.id = i.gender_id " +
@@ -17,5 +17,6 @@ public interface EventPatientsRepository extends JpaRepository<EventPatient, Int
             "where mep.event_id = ?1")
     List<EventPatient> findByEventId(Integer eventId);
 
+    @Query(nativeQuery = true, value = "select id from disp.md_event_patient where id = ?1")
     Optional<EventPatient> findOneEventPatient(Integer Id);
 }

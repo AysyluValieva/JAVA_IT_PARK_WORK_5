@@ -12,22 +12,22 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CartDto {
+public class CardDto {
     private Integer id;
     private String serviceName;
     private String status;
 
 
 
-    public static CartDto from(EventServicePatient model ) {
-        return CartDto.builder()
+    public static CardDto from(EventServicePatient model ) {
+        return CardDto.builder()
                 .id(model.getId())
                 .serviceName(model.getEventServiceID().getServiceID().getName())
                 .status(model.getStatus().getName())
                 .build();
     }
 
-    public static List<CartDto> from(List<EventServicePatient> models) {
-        return models.stream().map(CartDto::from).collect(Collectors.toList());
+    public static List<CardDto> from(List<EventServicePatient> models) {
+        return models.stream().map(CardDto::from).collect(Collectors.toList());
     }
 }

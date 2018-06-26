@@ -13,7 +13,7 @@ public interface EventPatientS {
 
     List<ClinicDto> getClinics();
     List<EventDto> getEvents();
-    List<IndividualDto> getIndividual(String surname);
+    List<IndividualDto> getIndividual();
 
     List<EventPatientsDto> getAllEventPatient(Integer eventId);
 

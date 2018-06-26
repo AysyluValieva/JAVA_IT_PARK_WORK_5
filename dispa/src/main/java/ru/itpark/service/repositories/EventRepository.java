@@ -15,6 +15,6 @@ public interface EventRepository extends JpaRepository<Event, Integer>{
     @Query(nativeQuery = true, value = "SELECT id, name from disp.md_event WHERE id = 2501 limit 1")
     List<Event> findOneEvent();
 
-    @Query(nativeQuery = true, value = "SELECT id, name from disp.md_event WHERE id = 2501 limit 1")
+    @Query(nativeQuery = true, value = "SELECT id, name, event_type, org_id from disp.md_event WHERE id = 2501 limit 1")
     Optional<Event> findOneEventID();
 }
