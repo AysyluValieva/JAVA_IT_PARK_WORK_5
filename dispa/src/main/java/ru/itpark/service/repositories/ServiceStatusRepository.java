@@ -15,4 +15,7 @@ public interface ServiceStatusRepository extends JpaRepository<ServiceStatus, In
 
     @Query(nativeQuery = true, value = "SELECT id, name from disp.md_event_service_status WHERE id = ?1 limit 1")
     Optional<ServiceStatus> findOneStatusById(Integer id);
+
+    @Query(nativeQuery = true, value = "SELECT id, name from disp.md_event_service_status")
+    List<ServiceStatus> findByName();
 }

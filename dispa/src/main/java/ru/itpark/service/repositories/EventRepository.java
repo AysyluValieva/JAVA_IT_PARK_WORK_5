@@ -12,9 +12,9 @@ public interface EventRepository extends JpaRepository<Event, Integer>{
     @Query(nativeQuery = true, value = "SELECT * from disp.md_event WHERE org_id = 27 and trim(name) like '%'||trim(?1)||'%'")
     List<Event> findByName(String name);
 
-    @Query(nativeQuery = true, value = "SELECT id, name from disp.md_event WHERE id = 2501 limit 1")
+    @Query(nativeQuery = true, value = "SELECT id, name, event_type, org_id from disp.md_event WHERE id in (2501,2683,2685) ")
     List<Event> findOneEvent();
 
-    @Query(nativeQuery = true, value = "SELECT id, name, event_type, org_id from disp.md_event WHERE id = 2501 limit 1")
+    @Query(nativeQuery = true, value = "SELECT id, name, event_type, org_id from disp.md_event WHERE  id in (2501,2683,2685) limit 1")
     Optional<Event> findOneEventID();
 }

@@ -20,7 +20,7 @@ public class CardSImpl implements CardS{
     private IndividualRepository individualRepository;
 
     public List<IndividualDto> getIndividual(Integer indivId) {
-        List<Individual> individuals = individualRepository.findOneIndividualById(indivId);
+        List<Individual> individuals = individualRepository.findOneIndividualByIdEvent(indivId);
 
         List<IndividualDto> individualDtos = new ArrayList<>();
         for (Individual individual : individuals) {

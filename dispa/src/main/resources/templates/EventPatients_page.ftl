@@ -11,42 +11,56 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         select {
-            width: 300px; /* Ширина списка в пикселах */
+            width: 350px; /* Ширина списка в пикселах */
+        }
+        body {
+            margin: 10; /* Убираем отступы */
         }
     </style>
     </head>
 <body>
-
+<nav class="navbar navbar-light fixed-top" style="background-color:#555c69; color:white;">
+    <a class="navbar-brand">
+        <h1><span class="fa fa-male"></span><span class="fa fa-female"></span><span class="fa fa-medkit"></span> Диспансеризация населения</h1>
+    </a>
+</nav>
+</br></br></br></br></br>
 <!-- Кнопка пуска модальное окно -->
 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
     Добавить пациента
 </button>
-</br>
+</br></br></br>
 <!-- Модальное окно -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">Добавить пациента</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Добавить пациента</h4>
             </div>
             <div class="modal-body">
                 <form action="/eventPatients" method="post">
-                   <!-- <input id="eventID" type="text" name="eventID" placeholder="Мероприятие" />
-                    <input id="indivID" type="text" name="indivID" placeholder="Пациент" />-->
-                    <select id = "indivID">
-                       <#list indivID as individual>
-                           <option value="${individual.id?c}">${individual.surname}</option>
-                       </#list>
-
-                        <select id = "eventID">
-                       <#list eventID as event>
+                    <label for="eventID">
+                        <span>Мероприятие<span class="required">*</span></span>
+                    </label></br>
+                    <select name="eventID" onChange="document.OrderForm.TT.value=document.OrderForm.eventID.options[document.OrderForm.eventID.selectedIndex].text;"">
+                       <#list events as event>
                            <option value="${event.id?c}">${event.name}</option>
                        </#list>
-
                     </select>
+                    </br></br>
+                    <label for="indivID">
+                        <span>Пациент<span class="required">*</span></span>
+                    </label></br>
+                    <select name="indivID" onChange="document.OrderForm.TT.value=document.OrderForm.indivID.options[document.OrderForm.indivID.selectedIndex].text;"">
+                       <#list individuals as individual>
+                           <option value="${individual.id?c}">${individual.name}</option>
+                       </#list>
+                    </select>
+                    </br></br>
                     <input type="submit" value="Сохранить"/>
                 </form>
             </div>

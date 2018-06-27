@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.itpark.service.dto.ServiceStatusDto;
 import ru.itpark.service.forms.SrvRenderedForm;
 import ru.itpark.service.models.*;
 import ru.itpark.service.repositories.*;
@@ -36,12 +37,30 @@ public class SrvRenderedSImpl implements SrvRenderedS{
         return srvRenderedDtos;
     }
 
+
     @Autowired
     private ServiceStatusRepository serviceStatusRepository;
 
+    public List<ServiceStatusDto> getSrvStatus() {
+        List<ServiceStatus> serviceStatuss = serviceStatusRepository.findByName();
+
+        List<ServiceStatusDto> serviceStatusDtos = new ArrayList<>();
+        for (ServiceStatus serviceStatus : serviceStatuss) {
+            serviceStatusDtos.add(ServiceStatusDto.builder()
+                    .id(serviceStatus.getId())
+                    .name(serviceStatus.getName())
+
+                    .build());
+        }
+        return serviceStatusDtos;
+    }
+
+
+
+
     @Override
     public SrvRenderedDto updateSrvRendered(SrvRenderedForm srv) {
-        EventServicePatient srvRendered = srvRenderedRepository.findOneByIdOpt(srv.getId()).get();
+        EventServicePatient srvRendered = srvRenderedRepository.findOneByIdOpt(srv.getSrvRendered()).get();
         ServiceStatus sStatus = serviceStatusRepository.findOneStatusByName(srv.getStatus()).get();
         srvRendered.setStatus(sStatus);
         srvRenderedRepository.save(srvRendered);

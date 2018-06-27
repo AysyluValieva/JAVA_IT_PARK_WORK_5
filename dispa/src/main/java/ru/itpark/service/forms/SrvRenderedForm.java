@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class SrvRenderedForm {
 
-    private Integer id;
+    private Integer srvRendered;
     private String status;
 
 }

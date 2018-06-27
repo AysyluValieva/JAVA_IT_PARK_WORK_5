@@ -38,10 +38,10 @@ public class EventPatientController {
         model.addAttribute("eventPatients", eventPatientS.getAllEventPatient(2501));
 
         List<IndividualDto> individuals = eventPatientS.getIndividual();
-        model.addAttribute("indivID",individuals);
+        model.addAttribute("individuals",individuals);
 
         List<EventDto> event = eventPatientS.getEvents();
-        model.addAttribute("eventID",event);
+        model.addAttribute("events",event);
 
         return "EventPatients_page";
     }
