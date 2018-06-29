@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.itpark.service.models.EventAgreement;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,13 +19,11 @@ import java.util.stream.Collectors;
 public class EventAgreementDto {
     private Integer id;
     private Integer eventPatientID;
-    private Date adate;
 
     public static EventAgreementDto from(EventAgreement model) {
         return EventAgreementDto.builder()
                 .id(model.getId())
                 .eventPatientID(model.getEventPatientID().getId())
-                .adate(model.getAdate())
                 .build();
     }
 

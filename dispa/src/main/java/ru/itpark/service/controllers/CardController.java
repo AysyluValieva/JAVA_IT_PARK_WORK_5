@@ -1,18 +1,15 @@
 package ru.itpark.service.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.service.dto.*;
-import ru.itpark.service.forms.EventPatientForm;
 import ru.itpark.service.forms.SrvRenderedForm;
 import ru.itpark.service.services.CardS;
 import ru.itpark.service.services.SrvRenderedS;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class CardController {
@@ -27,6 +24,10 @@ public class CardController {
 
         List<IndividualDto> individuals = cardS.getIndividual(eventPatientId);
         model.addAttribute("individuals",individuals);
+
+        List<EventPatientDto> eventPatients = cardS.getEventPatient(eventPatientId);
+        model.addAttribute("eventPatients",eventPatients);
+
         return "Card_page";
     }
 
@@ -53,5 +54,8 @@ public class CardController {
         srvRenderedS.updateSrvRendered(srvRendered);
         return "redirect:/eventPatients";
     }
+
+
+
 
 }

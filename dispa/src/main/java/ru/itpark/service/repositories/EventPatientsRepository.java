@@ -17,6 +17,9 @@ public interface EventPatientsRepository extends JpaRepository<EventPatient, Int
             "where mep.event_id = ?1")
     List<EventPatient> findByEventId(Integer eventId);
 
-    @Query(nativeQuery = true, value = "select id from disp.md_event_patient where id = ?1")
+    @Query(nativeQuery = true, value = "select id , event_id, indiv_id  from disp.md_event_patient where id = ?1")
     Optional<EventPatient> findOneEventPatient(Integer Id);
+
+    @Query(nativeQuery = true, value = "select id, event_id, indiv_id from disp.md_event_patient where id = ?1")
+    List<EventPatient> findOneEventPatientID(Integer Id);
 }

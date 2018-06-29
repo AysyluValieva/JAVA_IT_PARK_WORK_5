@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.itpark.service.dto.CardDto;
+import ru.itpark.service.dto.EventPatientDto;
 import ru.itpark.service.dto.IndividualDto;
+import ru.itpark.service.models.EventPatient;
 import ru.itpark.service.models.EventServicePatient;
 import ru.itpark.service.models.Individual;
 import ru.itpark.service.repositories.CardRepository;
+import ru.itpark.service.repositories.EventPatientsRepository;
 import ru.itpark.service.repositories.IndividualRepository;
 
 
@@ -52,5 +55,22 @@ public class CardSImpl implements CardS{
                     .build());
         }
         return cartDtos;
+    }
+
+    @Autowired
+    private EventPatientsRepository eventPatientsRepository;
+
+    public List<EventPatientDto> getEventPatient(Integer eventPatientId) {
+        List<EventPatient> eventPatients = eventPatientsRepository.findOneEventPatientID(eventPatientId);
+
+        List<EventPatientDto> eventPatientDtos = new ArrayList<>();
+        for (EventPatient eventPatient : eventPatients) {
+            eventPatientDtos.add(EventPatientDto.builder()
+                    .id(eventPatient.getId())
+                    .eventID(eventPatient.getEventID().getId())
+                    .indivID(eventPatient.getIndivID().getId())
+                    .build());
+        }
+        return eventPatientDtos;
     }
 }

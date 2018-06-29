@@ -8,24 +8,23 @@ import ru.itpark.service.forms.EventServicePatientForm;
 import ru.itpark.service.models.*;
 import ru.itpark.service.repositories.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-public class EventAgreementSImpl  implements EventAgreementS{
+@Component
+public class EventAgreementSImpl  implements EventAgreementS {
 
     @Autowired
     private EventAgreementRepository eventAgreementRepository;
-
-    public List<EventAgreementDto> getOneEventAgreement(Integer eventPatientServiceId) {
-        List<EventAgreement> eventAgreements = eventAgreementRepository.findByEventPatientId(eventPatientServiceId);
+    public List<EventAgreementDto> getOneEventAgreement(Integer eventPatientId) {
+        List<EventAgreement> eventAgreements = eventAgreementRepository.findByEventPatientId(eventPatientId);
 
         List<EventAgreementDto> eventAgreementDtos = new ArrayList<>();
         for (EventAgreement eventAgreement : eventAgreements) {
             eventAgreementDtos.add(EventAgreementDto.builder()
                     .id(eventAgreement.getId())
                     .eventPatientID(eventAgreement.getEventPatientID().getId())
-                    .adate(eventAgreement.getAdate())
                     .build());
         }
         return eventAgreementDtos;
@@ -38,11 +37,9 @@ public class EventAgreementSImpl  implements EventAgreementS{
     public void addEventAgreement(EventAgreementForm eventAgreement) {
 
         EventPatient eventPatient = eventPatientsRepository.findOneEventPatient(eventAgreement.getEventPatientID()).get();
-        Date adate = eventAgreement.getAdate();
 
         EventAgreement newEventAgreement = EventAgreement.builder()
                 .eventPatientID(eventPatient)
-                .adate(adate)
                 .build();
         eventAgreementRepository.save(newEventAgreement);
 
@@ -64,7 +61,7 @@ public class EventAgreementSImpl  implements EventAgreementS{
     @Override
     public void addEventServicePatient(Integer eventId ){
 
-        List<EventServicePatient> list = eventServicePatientRepository.findByEventId(eventId);
+        List<EventServicePatient> list = eventServicePatientRepository.findEventId(eventId);
 
         if (list != null) {
             for (EventServicePatient eventService : list) {
@@ -80,7 +77,7 @@ public class EventAgreementSImpl  implements EventAgreementS{
                         .build();
 
 
-                srvRenderedRepository.save(newEventServicePatient);
+                eventServicePatientRepository.save(newEventServicePatient);
 
 
             }

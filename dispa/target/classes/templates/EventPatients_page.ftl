@@ -11,7 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         select {
-            width: 350px; /* Ширина списка в пикселах */
+            width: 300px; /* Ширина списка в пикселах */
         }
         body {
             margin: 10; /* Убираем отступы */
@@ -37,9 +37,7 @@
             <div class="modal-header">
 
                 <h4 class="modal-title" id="myModalLabel">Добавить пациента</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+
             </div>
             <div class="modal-body">
                 <form action="/eventPatients" method="post">

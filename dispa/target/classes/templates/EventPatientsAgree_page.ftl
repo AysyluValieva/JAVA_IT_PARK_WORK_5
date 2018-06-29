@@ -34,33 +34,16 @@
 <body>
 
 <div class="eventPatientsCardAgree">
-    <form action="/eventPatientsCard/{eventPatientsCard-id}/eventPatientsCardAgree" method="post">
+    <form action="/eventPatientsCard/{eventPatientsCard-id}/eventPatientsAgree" method="post">
 
-        <select hidden="true" name="srvRendered" onChange="document.OrderForm.TT.value=document.OrderForm.srvRendered.options[document.OrderForm.srvRendered.selectedIndex].text;"">
-                       <#list srvRendered as srvRendered>
-                           <option value="${srvRendered.id?c}">${srvRendered.serviceName}</option>
+        <select hidden="true"  name="eventPatientID" onChange="document.OrderForm.TT.value=document.OrderForm.eventPatient.options[document.OrderForm.eventPatient.selectedIndex].text;"">
+                       <#list eventPatient as eventPat>
+                           <option value="${eventPat.id?c}">${eventPat.id?c}</option>
                        </#list>
         </select>
 
-        <div class="form-group shadow-textarea" >
-       <#list srvRendered as srvRendered>
-            <p><h4 margin="10px">Услуга</h4></p>
-            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="2" disabled="true" ">
-            ${srvRendered.serviceName}
-            </textarea>
 
-        </#list>
-        </div>
-        <label for="status">
-            <span>Статус</span>
-        </label>
-        <select name="status" onChange="document.OrderForm.TT.value=document.OrderForm.status.options[document.OrderForm.status.selectedIndex].text;"">
-                       <#list serviceStatus as event>
-                           <option value="${event.name}">${event.name}</option>
-                       </#list>
-        </select>
-
-         <input type="submit" value="Сохранить"/>
+        <input type="submit" value="Сохранить"/>
     </form>
 </div>
 </body>

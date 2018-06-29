@@ -19,20 +19,6 @@ public class EventPatientController {
     @Autowired
     private EventPatientS eventPatientS;
 
-  /*  @GetMapping("/events/{event-id}/eventPatients")
-    @ResponseBody
-    public ResponseEntity<List<EventPatientsDto>>
-    getUsersOfGroup(@PathVariable("event-id") Integer eventId) {
-        return ResponseEntity.ok(eventPatientS.getAllEventPatient(eventId));
-    }
-*/
-
-    @GetMapping("/events/{event-id}/eventPatients")
-    public String EventPatientsInEventPage(ModelMap model) {
-        model.addAttribute("eventPatients", eventPatientS.getAllEventPatient(2501));
-        return "EventPatientsInEvent_page";
-    }
-
     @GetMapping("/eventPatients")
     public String getEventPatientsPage(ModelMap model) {
         model.addAttribute("eventPatients", eventPatientS.getAllEventPatient(2501));

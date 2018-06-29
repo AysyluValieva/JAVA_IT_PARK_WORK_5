@@ -10,6 +10,6 @@ public interface EventServiceRepository  extends JpaRepository<EventService, Int
 
 
 
-    @Query(nativeQuery = true, value = "select id from disp.md_event_service where event_id = ?1")
+    @Query(nativeQuery = true, value = "select id, event_id, org_id, service_id from disp.md_event_service where id = ?1")
     Optional<EventService> findOneId(Integer Id);
 }

@@ -16,19 +16,17 @@
         .shadow-textarea textarea.form-control {
             padding-left: 0.8rem;
         }
-        table {
+        .table {
             border-collapse: collapse; /* Отображать двойные линии как одинарные */
         }
-        th {
+        .th {
             background: #ccc; /* Цвет фона */
             text-align: center; /* Выравнивание по левому краю */
         }
-        td, th {
+        .td, th {
         }
-        body {
-            margin: 10; /* Убираем отступы */
-        }
-        h4{
+
+        .h4{
             margin-left: 20%;
         }
     </style>
@@ -40,32 +38,45 @@
             <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="2" disabled="true" ">
                 ${individual.name}
             </textarea>
-
         </#list>
+    </br>
+
+<#list eventPatients as eventPatient>
+    <div>
+        <form action="/eventPatients/${eventPatient.id?c}/eventPatientsAgree" method="get">
+            <input type="submit" value="Согласие"/>
+        </form>
+    </div>
+
+</#list>
+
+
 </div>
 
 
+</br>
 <div class="eventPatientsCard">
     <table class="table table-sm" width="300px">
         <tr>
-            <th>
+            <th width="50%">
                 Название услуги
             </th>
-            <th>
+            <th align="center">
                 Статус
             </th>
-            <th>
+            <th  align="center">
 
             </th>
 
         </tr>
         <#list eventPatientsCard as eventPatient>
+
             <tr>
 
                 <td width="50%">
                     ${eventPatient.serviceName}
                 </td>
-                <td width="25%" valign="top" align="center">
+                <td width="25%" valign="top" >
                     ${eventPatient.status}
                 </td>
                 <td width="25%" valign="top" align="center">

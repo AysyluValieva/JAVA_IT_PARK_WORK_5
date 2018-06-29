@@ -1,5 +1,6 @@
 package ru.itpark.service.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -26,5 +27,4 @@ public class EventAgreement {
     @JoinColumn (name = "event_patient_id", nullable = false)
     private EventPatient eventPatientID;
 
-    private Date adate;
 }
